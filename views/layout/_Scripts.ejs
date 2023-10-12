@@ -1,0 +1,15 @@
+<script type="importmap">
+<% if (process.env.NODE_ENV.trim() === 'production') { %>
+  {
+    "imports": {
+      "vue": "/scripts/plugins/vue/vue.esm-browser.prod.js"
+    }
+  }
+<% } else { %>
+  {
+    "imports": {
+      "vue": "/scripts/plugins/vue/vue.esm-browser.js"
+    }
+  }
+<% } %>
+</script>

@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<%- include('layout/head', { title: title }) %>
+<body>
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+  <div id="app">
+    <h2>{{ message }}</h2>
+    <button type="button" @click="count++">Count is: {{ count }}</button>
+  </div>
+</body>
+<%- include('layout/footer') %>
+<script type="module" src="/scripts/page/index.js"></script>
 </html>

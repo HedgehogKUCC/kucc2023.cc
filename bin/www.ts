@@ -4,36 +4,44 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('kucc2023.cc:server');
-var http = require('http');
+import APP from '../app';
+import http from 'http';
+import debug from 'debug';
+
+import 'dotenv/config';
+
+import { ICustomServerListenerError } from '../types/index';
+
+const SEVER_DEBUG = debug('kucc2023.cc:server');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+const PORT = normalizePort(process.env.PORT || '3000');
+APP.set('port', PORT);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const SERVE = http.createServer(APP);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+SERVE.listen(PORT);
+SERVE.on('error', onError);
+SERVE.on('listening', onListening);
+
+console.log(`Server is running on port ${PORT}`);
 
 /**
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
+function normalizePort(val: string) {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -53,14 +61,14 @@ function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+function onError(error: ICustomServerListenerError) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  var bind = typeof PORT === 'string'
+    ? 'Pipe ' + PORT
+    : 'Port ' + PORT;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -82,9 +90,9 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  const ADDR = SERVE.address();
+  const BIND = typeof ADDR === 'string'
+    ? 'pipe ' + ADDR
+    : 'port ' + ADDR?.port;
+  SEVER_DEBUG('Listening on ' + BIND);
 }
