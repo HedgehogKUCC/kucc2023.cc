@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node ./bin/www.js",
-    "tsc": "del-cli --force ./dist && tsc --project tsconfig.client.json && tsc --project tsconfig.server.json",
-    "copy": "cp -r client/stylesheets dist/client && cp -r views dist/ && cp .env dist/",
-    "dev": "set NODE_ENV=development && pnpm run tsc && pnpm run copy && nodemon dist/bin/www.js"
+    "start:dev": "set NODE_ENV=production && node ./dist/bin/www.js",
+    "tsc": "del-cli --force ./dist && tsc --project tsconfig.client.build.json && tsc --project tsconfig.server.json",
+    "copy": "cp -r client/js/plugins dist/client/js && cp -r client/stylesheets dist/client && cp -r views dist/ && cp .env dist/",
+    "tsc:watch": "tsc -w -p tsconfig.client.dev.json",
+    "dev": "set NODE_ENV=development && nodemon bin/www.ts",
+    "build": "pnpm run tsc && pnpm run copy"
   },
   "dependencies": {
     "cookie-parser": "1.4.6",
