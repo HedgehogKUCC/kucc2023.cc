@@ -2,7 +2,8 @@ import { createApp, ref } from 'vue';
 
 createApp({
   setup() {
-    const message = 'hello vue';
+    const message = 'hello vue 123456';
+
     const count = ref(0);
 
     return {
