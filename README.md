@@ -18,16 +18,36 @@
 
 ---
 
-## pnpm scripts
-
-Use `Git Bash` when `pnpm run copy` or `pnpm run dev`
-
-Because Windows platform do not understand `cp`
-
----
-
 ## tsconfig.[ client | server ].json
 
 區分的原因是因為 `Node` ( server ) 需要用 module: commonjs 去編譯，瀏覽器看不懂 `require` 但看得懂 `import`
 
 所以 client & server 會需要不同的 `target` & `module`
+
+---
+
+## Dev
+
+***open two terminal***
+
+```
+$ pnpm dev
+```
+
+```
+$ pnpm run tsc:watch
+```
+
+停止: `Ctrl + C`
+
+---
+
+## Build
+
+Use `Git Bash` when `pnpm run copy` or `pnpm run dev`
+
+Because Windows platform do not understand `cp`
+
+```
+$ pnpm run build
+```
