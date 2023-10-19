@@ -7,5 +7,9 @@
   <%# Reference: https://me-sinyi.medium.com/browser-safari-mobile-%E6%95%B8%E5%AD%97css%E6%A8%A3%E5%BC%8F-81527bb5d438 %>
   <meta name="format-detection" content="telephone=no">
   <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <% if (process.env.NODE_ENV.trim() === 'production') { %>
+    <link rel='stylesheet' href='/css/output.css' />
+  <% } else { %>
+    <link rel='stylesheet' href='/css/dist/output.css' />
+  <% } %>
 </head>
