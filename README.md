@@ -28,7 +28,7 @@
 
 ## Dev
 
-***open two terminal***
+***open three terminal***
 
 ```
 $ pnpm dev
@@ -38,15 +38,13 @@ $ pnpm dev
 $ pnpm run tsc:watch
 ```
 
-停止: `Ctrl + C`
+```
+$ pnpm run tailwindcss:watch
+```
 
 ---
 
 ## Build
-
-Use `Git Bash` when `pnpm run copy` or `pnpm run dev`
-
-Because Windows platform do not understand `cp`
 
 ```
 $ pnpm run build
